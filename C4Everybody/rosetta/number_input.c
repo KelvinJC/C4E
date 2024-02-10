@@ -18,6 +18,4 @@ int main() {
     scanf("%d", &usf);
     euf = usf - 1;
     printf("EU Floor %d\n", euf);
-    return 0;
-
 }

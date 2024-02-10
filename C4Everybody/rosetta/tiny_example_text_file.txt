@@ -1,0 +1,4 @@
+C is the most important programming language you will ever learn
+C should not be the first programming language we teach to students
+You might never write a “professional” line of C during your career
+Learning C at the right time in your path, is necessary for you to become a master programmer
