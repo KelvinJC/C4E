@@ -8,9 +8,7 @@ replacing each string of one or more blanks by a single blank.
 
 
 int main() {
-    int c;
-    
-    int num_blank = 0;  
+    int c, num_blank = 0;  
 
     while( (c = getchar()) != EOF) {
         if (c == ' ') {
