@@ -18,10 +18,10 @@ int main() {
     int save_to_output_array();
     int len;
     int num_removed_chars;
-    int array_last_position = 0;
     char line[MAX_LINE_LENGTH];
     char cache[MAX_LINE_LENGTH];
     char save_array[BUCKET_ARRAY_LENGTH];
+    int array_last_index = 0;
 
     len = 0;
     while ((len = get_line(line, MAX_LINE_LENGTH)) > 0) {
@@ -33,22 +33,22 @@ int main() {
         num_removed_chars = trim_trailing_tabs_and_blanks(cache, len);
         //printf("Number of removed characters: %d\n", num_removed_chars);
         // printf("%s\n", cache);
-        array_last_position = save_to_output_array(cache, len - num_removed_chars, save_array, array_last_position);
+        array_last_index = save_to_output_array(cache, len - num_removed_chars, save_array, array_last_index);
     }
     printf("Output lines between broken lines: \n_ _ _ _ _ _ _ _ _\n%s_ _ _ _ _ _ _ _ _", save_array);
 }
 
 
 // check if line is a blank line
-int count_non_blank_chars(line_to_check, line_length)
+int count_non_blank_chars(line_to_check, len)
 char line_to_check[];
-int line_length;
+int len;
 
 {
     int i;
     int non_blank_chars = 0;
 
-    for (i = 0; i < (line_length - 1); ++i) {
+    for (i = 0; i < (len - 1); ++i) {
         if (line_to_check[i] != '\n' && line_to_check[i] != '\t' && line_to_check[i] != ' ') {
             non_blank_chars = 1;
         } 
@@ -58,11 +58,11 @@ int line_length;
 
 
 // function to read lines from output
-int get_line(input_line, line_length_limit) char input_line[]; int line_length_limit; {
+int get_line(input_line, limit) char input_line[]; int limit; {
 
     int i, c;
 
-    for (i = 0; i < line_length_limit && (c = getchar()) != EOF && c != '\n'; ++i) {
+    for (i = 0; i < limit - 1 && (c = getchar()) != EOF && c != '\n'; ++i) {
         input_line[i] = c;
     }
     if (c == '\n') {
@@ -74,14 +74,14 @@ int get_line(input_line, line_length_limit) char input_line[]; int line_length_l
 
 
 // cache line 
-void save_to_cache(input_line, input_line_length, cache) 
+void save_to_cache(input_line, len, cache) 
 char input_line[]; 
-int input_line_length; 
+int len; 
 char cache[]; 
 {
     int i;
 
-    for (i = 0; i <= (input_line_length - 1); ++i) {
+    for (i = 0; i <= (len - 1); ++i) {
         cache[i] = input_line[i];
     }
     cache[i] = '\0';
@@ -109,16 +109,16 @@ int trim_trailing_tabs_and_blanks(line, len) char line[]; int len; {
 
 
 // save line to storage
-int save_to_output_array(line, line_length, array, position_last_saved)
+int save_to_output_array(line, len, array, position_last_saved)
 char line[]; 
-int line_length; 
+int len; 
 char array[]; 
 int position_last_saved;
 {
 
     int i;
     
-    for (i = 0; i <= (line_length - 1); ++i) {
+    for (i = 0; i <= (len - 1); ++i) {
         array[i + position_last_saved] = line[i];
     }
     array[i + position_last_saved] = '\0';
