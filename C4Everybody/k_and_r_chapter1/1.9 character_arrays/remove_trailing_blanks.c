@@ -14,34 +14,34 @@ int main() {
     int get_line();
     int trim_trailing_tabs_and_blanks();
     int count_non_blank_chars();
-    void save_to_cache();
-    int save_to_output_array();
-    int len;
+    void copy();
+    int copy_to_array();
+    int current_len;
     int num_removed_chars;
     char line[MAX_LINE_LENGTH];
-    char cache[MAX_LINE_LENGTH];
+    char duplicate[MAX_LINE_LENGTH];
     char save_array[BUCKET_ARRAY_LENGTH];
-    int array_last_index = 0;
+    int current_num_chars = 0;
 
-    len = 0;
-    while ((len = get_line(line, MAX_LINE_LENGTH)) > 0) {
-        save_to_cache(line, len, cache);
-        if (count_non_blank_chars(cache, len) == 0) {
+    current_len = 0;
+    while ((current_len = get_line(line, MAX_LINE_LENGTH)) > 0) {
+        copy(line, current_len, duplicate);
+        if (count_non_blank_chars(duplicate, current_len) == 0) {
             // printf("Line is blank\n");
             continue;
         }
-        num_removed_chars = trim_trailing_tabs_and_blanks(cache, len);
+        num_removed_chars = trim_trailing_tabs_and_blanks(duplicate, current_len);
         //printf("Number of removed characters: %d\n", num_removed_chars);
-        // printf("%s\n", cache);
-        array_last_index = save_to_output_array(cache, len - num_removed_chars, save_array, array_last_index);
+        // printf("%s\n", duplicate);
+        current_num_chars = copy_to_array(duplicate, current_len - num_removed_chars, save_array, current_num_chars);
     }
     printf("Output lines between broken lines: \n_ _ _ _ _ _ _ _ _\n%s_ _ _ _ _ _ _ _ _", save_array);
 }
 
 
 // check if line is a blank line
-int count_non_blank_chars(line_to_check, len)
-char line_to_check[];
+int count_non_blank_chars(line, len)
+char line[];
 int len;
 
 {
@@ -49,7 +49,7 @@ int len;
     int non_blank_chars = 0;
 
     for (i = 0; i < (len - 1); ++i) {
-        if (line_to_check[i] != '\n' && line_to_check[i] != '\t' && line_to_check[i] != ' ') {
+        if (line[i] != '\n' && line[i] != '\t' && line[i] != ' ') {
             non_blank_chars = 1;
         } 
     }
@@ -57,34 +57,34 @@ int len;
 }
 
 
-// function to read lines from output
-int get_line(input_line, limit) char input_line[]; int limit; {
+// function to read lines from input
+int get_line(line, limit) char line[]; int limit; {
 
     int i, c;
 
     for (i = 0; i < limit - 1 && (c = getchar()) != EOF && c != '\n'; ++i) {
-        input_line[i] = c;
+        line[i] = c;
     }
     if (c == '\n') {
-        input_line[i] = c;
+        line[i] = c;
         ++i;
     }
     return (i);
 }
 
 
-// cache line 
-void save_to_cache(input_line, len, cache) 
+// copy line 
+void copy(input_line, len, copy) 
 char input_line[]; 
 int len; 
-char cache[]; 
+char copy[]; 
 {
     int i;
 
     for (i = 0; i <= (len - 1); ++i) {
-        cache[i] = input_line[i];
+        copy[i] = input_line[i];
     }
-    cache[i] = '\0';
+    copy[i] = '\0';
 }
 
 
@@ -109,19 +109,19 @@ int trim_trailing_tabs_and_blanks(line, len) char line[]; int len; {
 
 
 // save line to storage
-int save_to_output_array(line, len, array, position_last_saved)
+int copy_to_array(line, len, array, current_num_char)
 char line[]; 
 int len; 
 char array[]; 
-int position_last_saved;
+int current_num_char;
 {
 
     int i;
     
     for (i = 0; i <= (len - 1); ++i) {
-        array[i + position_last_saved] = line[i];
+        array[i + current_num_char] = line[i];
     }
-    array[i + position_last_saved] = '\0';
+    array[i + current_num_char] = '\0';
 
-    return (i + position_last_saved);
+    return (i + current_num_char);
 }
