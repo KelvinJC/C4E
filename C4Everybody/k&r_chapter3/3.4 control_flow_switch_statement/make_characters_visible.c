@@ -25,45 +25,44 @@ int main() {
 }
 
 
-void expand(s, t) char s[], t[]; {
+void expand(input, expanded_line) char input[], expanded_line[]; {
     int i, j;
     i = j = 0;
 
-    for (i = 0, j = 0; s[i] != '\0'; ++i) {
-        switch (s[i]) {
+    for (i = 0, j = 0; input[i] != '\0'; ++i) {
+        switch (input[i]) {
         case '\n':
-            t[j++] = '\\';
-            t[j++] = 'n';
+            expanded_line[j++] = '\\';
+            expanded_line[j++] = 'n';
             break;
         case '\t':
-            t[j++] = '\\';
-            t[j++] = 't';
+            expanded_line[j++] = '\\';
+            expanded_line[j++] = 't';
             break;        
         default:
-            t[j++] = s[i];
+            expanded_line[j++] = input[i];
             break;
         }
     }
-    t[j] = '\0';
-
+    expanded_line[j] = '\0';
 }
 
     // Equivalent while loop
     //
-    // while (s[i] != '\0') {
-    //     switch (s[i]) {
+    // while (input[i] != '\0') {
+    //     switch (input[i]) {
     //         case '\n':
-    //             t[j++] = '\\';  //      == --- t[j] = '\\'; ++j; ---
-    //             t[j++] = 'n';   // same as --- t[j] = 'n';  ++j; ---
+    //             expanded_line[j++] = '\\';  //      == --- expanded_line[j] = '\\'; ++j; ---
+    //             expanded_line[j++] = 'n';   // same as --- expanded_line[j] = 'n';  ++j; ---
     //             break;
     //         case '\t':
-    //             t[j] = '\\';
+    //             expanded_line[j] = '\\';
     //             ++j;
-    //             t[j] = 't';
+    //             expanded_line[j] = 't';
     //             ++j;                
     //             break;
     //         default:
-    //             t[j] = s[i];
+    //             expanded_line[j] = input[i];
     //             ++j;
     //             break;
     //     }
