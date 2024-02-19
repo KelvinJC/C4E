@@ -43,7 +43,6 @@ int get_line(line, limit) char line[]; int limit; {
 
 void reverse(input) char input[]; {
     int i, j;
-    int newline;     // index of newline character
     int buffer;      // index of buffer character
     int odd_length;  // number of characters in input character array is even or odd
     int mid;         // middle index of the input character array
@@ -53,7 +52,6 @@ void reverse(input) char input[]; {
         ++i;
     }
 
-    newline     = i;        
     buffer      = i + 1;    
     odd_length  = i % 2;    
     mid         = i / 2;    
@@ -61,23 +59,22 @@ void reverse(input) char input[]; {
     j = 0;
     if (odd_length == 1) { // for character arrays of odd length
         while (j < mid) {
-            input[newline]     = input[mid - 1 - j];   // copy character at the left of middle index to '\n' index
+            input[buffer]     = input[mid - 1 - j];   // copy character at the left of middle index to '\0' index
             input[mid - 1 - j] = input[mid + 1 + j];   // copy character at the right of middle index to left of middle index
-            input[mid + 1 + j] = input[newline];       // copy initial left character from '\n' index to right index
+            input[mid + 1 + j] = input[buffer];       // copy initial left character from '\n' index to right index
             ++j;
         }
     }
-    else {                  // for character arrays of even length
+    else {                // for character arrays of even length
         while (j < mid) {
-            input[newline]     = input[mid - 1 - j];   // copy character at the left of middle index to '\n'  index
+            input[buffer]     = input[mid - 1 - j];   // copy character at the left of middle index to '\0'  index
             input[mid - 1 - j] = input[mid + j];       // copy character at middle index (during first loop i.e. j = 0) or right index to the left of middle index 
-            input[mid + j]     = input[newline];       // copying initial right character from '\n' index to left index
+            input[mid + j]     = input[buffer];       // copying initial right character from '\0' index to left index
             ++j;
         }
     }
 
-    // re-attach the newline and buffer characters
-    input[newline] = '\n';
+    // re-attach the buffer character
     input[buffer] = '\0';
 }
 
