@@ -61,7 +61,7 @@ void reverse(input) char input[]; {
         while (j < mid) {
             input[buffer]     = input[mid - 1 - j];   // copy character at the left of middle index to '\0' index
             input[mid - 1 - j] = input[mid + 1 + j];   // copy character at the right of middle index to left of middle index
-            input[mid + 1 + j] = input[buffer];       // copy initial left character from '\n' index to right index
+            input[mid + 1 + j] = input[buffer];       // copy initial left character from '\0' index to right index
             ++j;
         }
     }
