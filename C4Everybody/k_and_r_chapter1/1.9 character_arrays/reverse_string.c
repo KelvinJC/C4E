@@ -48,7 +48,7 @@ void reverse(input) char input[]; {
     int mid;         // middle index of the input character array
 
     i = 0;
-    while ( i <= MAX_LINE_LENGTH && input[i] != '\n' && input[i] != '\0' ) { // find length of input 
+    while (input[i] != '\n' && input[i] != '\0' ) { // find length of input 
         ++i;
     }
 
