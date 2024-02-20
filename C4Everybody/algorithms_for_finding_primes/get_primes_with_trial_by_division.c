@@ -65,17 +65,15 @@ int add_prime(prime_array) int prime_array[]; {
 
 int check_prime(integer) int integer; {
     int i;
-    int j = integer;
 
     if (integer < 2)
         return 0;
     if (integer == 2)
         return 1;
-    i = 2;
-    while (i * i <= integer) {
+
+    for (i = 2; i * i <= integer; ++i) {
         if (integer % i == 0)
             return 0;
-        ++i;
     }
     return 1;
 }
