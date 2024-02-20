@@ -17,20 +17,18 @@ int main() {
 
 
 
-    // printf("Here the ints [");
-    // for (i=1; i <= (UPPER_LIMIT); ++i) 
-    //     printf("%d, ", i);
-    // printf("]\n\n");
+    count_of_primes = add_prime(primes);
 
-    // count_of_primes = add_prime(primes);
-
-    // i = 0;
-    // printf("Here are the %d primes [", count_of_primes);
-    // for (i=0; i <= count_of_primes - 1; ++i) 
-    //     printf("%d, ", primes[i]);
-    // printf("]");
+    i = 0;
+    printf("Here are the %d primes between 1 and %d \n[", count_of_primes, UPPER_LIMIT);
+    for (i=0; i <= count_of_primes - 1; ++i) 
+        printf("%d, ", primes[i]);
+    printf("]\n");
     
-    printf("Here are the primes\n[ ");
+    printf("------------------------------------\n");
+
+    printf("Result of check_prime function with 1 to 1000\n");
+    printf("Here are the primes between 1 and 1000\n[ ");
     for (i=0; i <= 1000; ++i) 
         if (check_prime(i))
             printf("%d ", i, check_prime(i));    
