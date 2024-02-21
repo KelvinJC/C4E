@@ -16,10 +16,8 @@ int main() {
     int count_of_primes;
 
 
-
     count_of_primes = add_prime(primes);
 
-    i = 0;
     printf("Here are the %d primes between 1 and %d \n[", count_of_primes, UPPER_LIMIT);
     for (i=0; i <= count_of_primes - 1; ++i) 
         printf("%d, ", primes[i]);
@@ -29,7 +27,7 @@ int main() {
 
     printf("Result of check_prime function with 1 to 1000\n");
     printf("Here are the primes between 1 and 1000\n[ ");
-    for (i=0; i <= 1000; ++i) 
+    for (i=0; i <= UPPER_LIMIT; ++i) 
         if (check_prime(i))
             printf("%d ", i, check_prime(i));    
     printf("]");
@@ -42,7 +40,7 @@ int add_prime(prime_array) int prime_array[]; {
 
     prime_array[0] = 2; // add first prime
    
-    for (i = 1, m = 1; i <= UPPER_LIMIT; ++i, factor = 0) {
+    for (i = 1, m = 1; i <= UPPER_LIMIT ; ++i, factor = 0) {
         if (i <= 2)
             continue;
         if ((i % 2) == 0) {
@@ -80,6 +78,6 @@ int check_prime(integer) int integer; {
 
 // NOTE:
 // add_prime can take advantage of further optimisation 
-// by only looking testing an integer against already found primes up till the integer's square root
+// by only testing an integer against already found primes up till the integer's square root
 // check_prime in its current implementation has to check every integer 
 // up till the test integer's square root
