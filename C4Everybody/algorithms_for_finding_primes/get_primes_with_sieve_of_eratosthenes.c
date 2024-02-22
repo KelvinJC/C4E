@@ -37,11 +37,9 @@ int main() {
 
 
 void add_prime(bool_array, prime_array) int bool_array[], prime_array[]; {
-    int i, integer, index_last_prime, factor;
+    int i, integer, index_last_prime, num_factor = 0;
     
-    for (integer = 0, index_last_prime = 0; integer <= ARRAY ; ++integer) { // loop through boolean array
-        factor = 0;
-
+    for (integer = 0, index_last_prime = 0; integer <= ARRAY; ++integer, num_factor = 0) { // loop through boolean array
 
         if (integer <= 1) {  // array index at 0, 1
             bool_array[integer] == 0;
@@ -53,7 +51,7 @@ void add_prime(bool_array, prime_array) int bool_array[], prime_array[]; {
             prime_array[index_last_prime++] = integer; // add integer to array of primes then increment index of prime array
             // multiples of current integer are non-prime
             // convert the corresponding boolean element to 0 
-            for (i = 3; i <= ARRAY; ++i) { // begin loop from 3 as beginning from current int
+            for (i = integer + 1; i <= ARRAY; ++i) { 
                 if (i % integer == 0) {
                     bool_array[i] = 0; 
                 }
@@ -65,26 +63,26 @@ void add_prime(bool_array, prime_array) int bool_array[], prime_array[]; {
         if (bool_array[integer] == 0)
             continue;
 
-//        for (i = 5; i <= sqrt(ARRAY); i = i + 2) {  optimisation to find greater number of primes; max ARRAY length reached so far == 250,000      
+        //for (i = 5; i <= sqrt(ARRAY); i = i + 2) {  optimisation to find greater number of primes; max ARRAY length reached so far == 250,000      
 
-            // try dividing integer by all found primes less than its square root
-            for (i = 0; (prime_array[i] <= sqrt(integer)) && integer <= sqrt(ARRAY); ++i, factor = 0) { 
-                if (integer % prime_array[i] == 0) {
-                    factor = 1;
-                    break;
-                }
+        // try dividing integer by all found primes less than its square root
+        for (i = 0; (prime_array[i] <= sqrt(integer)) && integer <= sqrt(ARRAY); ++i) { 
+            if (integer % prime_array[i] == 0) {
+                num_factor = 1;
+                break;
             }
+        }
 
-            if (factor == 0) {
-                bool_array[integer] = 1;
-                prime_array[index_last_prime++] = integer;
-                for (i = integer; i <= ARRAY; ++i) { 
-                    if (i % integer == 0) {
-                        bool_array[i] = 0; 
-                    }
-                } 
-                continue;          
+        if (num_factor == 0) {
+            bool_array[integer] = 1;
+            prime_array[index_last_prime++] = integer;
+            for (i = integer + 1; i <= ARRAY; ++i) { 
+                if (i % integer == 0) {
+                    bool_array[i] = 0; 
+                }
             } 
-//        }  
+            continue;          
+        } 
+        //}  
     }
 }
