@@ -37,7 +37,7 @@ int main() {
 
 
 void add_prime(bool_array, prime_array) int bool_array[], prime_array[]; {
-    int i, integer, index_last_prime, num_factor = 0;
+    int i, integer, index_last_prime, product, num_factor = 0;
     
     for (integer = 0, index_last_prime = 0; integer <= ARRAY; ++integer, num_factor = 0) { // loop through boolean array
 
@@ -49,12 +49,12 @@ void add_prime(bool_array, prime_array) int bool_array[], prime_array[]; {
         if (integer <= 3) {  // array index at 2, 3
             bool_array[integer] == 1;
             prime_array[index_last_prime++] = integer; // add integer to array of primes then increment index of prime array
-            // multiples of current integer are non-prime
+            // multiples of current integer which is a prime are non-prime
             // convert the corresponding boolean element to 0 
-            for (i = integer + 1; i <= ARRAY; ++i) { 
-                if (i % integer == 0) {
-                    bool_array[i] = 0; 
-                }
+            for (i = 2, product = 0; product <= ARRAY; ++i) {
+                product = integer * i;
+                if (product <= ARRAY)
+                    bool_array[product] = 0;
             }
             continue;
         }
@@ -76,10 +76,10 @@ void add_prime(bool_array, prime_array) int bool_array[], prime_array[]; {
         if (num_factor == 0) {
             bool_array[integer] = 1;
             prime_array[index_last_prime++] = integer;
-            for (i = integer + 1; i <= ARRAY; ++i) { 
-                if (i % integer == 0) {
-                    bool_array[i] = 0; 
-                }
+            for (i = 2, product = 0; product <= ARRAY; ++i) {
+                product = integer * i;
+                if (product <= ARRAY)
+                    bool_array[product] = 0;
             } 
             continue;          
         } 
