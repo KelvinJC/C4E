@@ -35,14 +35,12 @@ void main() {
     int compare_lines();
     void copy_to_cache();
 
-    int len;
     int index_last_saved = 0;
     char output_array[ARRAY_STORE];
     char cached_line[LINE_LENGTH_LIMIT];
     char line[LINE_LENGTH_LIMIT];
 
-    len = 0;
-    while ((len = get_line(line, LINE_LENGTH_LIMIT)) > 0) {
+    while ( get_line(line, LINE_LENGTH_LIMIT) > 0 ) {
         if (index_last_saved == 0) {
             copy_to_cache(line, cached_line);
             index_last_saved = copy_to_array(line, index_last_saved, output_array);
