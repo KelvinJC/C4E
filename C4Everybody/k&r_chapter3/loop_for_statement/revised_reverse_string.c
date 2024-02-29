@@ -10,17 +10,17 @@ int main() {
 
 
 void reverse(string) char string[]; {
-    int left_index, right_index, temp, len;
+    int left, right, temp, len;
 
     // Calculate string length
     for (len = 0; string[len] != '\0'; len++)
         ;
 
     // Reverse string
-    for (left_index = 0, right_index = (len - 1); left_index < right_index; left_index++, right_index--) {
-        temp = string[left_index];
-        string[left_index] = string[right_index];
-        string[right_index] = temp;
+    for (left = 0, right = (len - 1); left < right; left++, right--) {
+        temp = string[left];
+        string[left] = string[right];
+        string[right] = temp;
     }
     printf("Reverse of string: %s\n", string);
 }
