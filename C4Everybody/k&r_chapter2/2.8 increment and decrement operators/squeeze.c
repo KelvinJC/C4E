@@ -8,10 +8,10 @@ which removes all occurrences of the character c from the string s.
 
 void main() {
     void squeeze();
-    char s1[7] = "Server";
-    char s2[10] = "servitude";
-    char s3[10] = "services";
-    char s4[10] = "Negritude";
+    char s1[] = "Server";
+    char s2[] = "servitude";
+    char s3[] = "services";
+    char s4[] = "Negritude";
 
     squeeze(s1, 'e');
     printf("%s\n", s1);
