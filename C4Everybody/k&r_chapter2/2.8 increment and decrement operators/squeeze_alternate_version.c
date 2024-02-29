@@ -9,11 +9,11 @@ which deletes each character in s1 which matches any character in the string s2.
 
 void main() {
     void squeeze();
-    char check[14] = "abnormalities";
-    char s1[10] = "servitude";
-    char s2[10] = "services";
-    char s3[10] = "Negritude";
-    char s4[10] = "Server";
+    char check[] = "abnormalities";
+    char s1[] = "servitude";
+    char s2[] = "services";
+    char s3[] = "Negritude";
+    char s4[] = "Server";
 
     squeeze(check, s1);
     printf("%s\n", s1);
