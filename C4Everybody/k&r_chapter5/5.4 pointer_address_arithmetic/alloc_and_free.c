@@ -8,11 +8,15 @@ There are two routines:
 
 
 #include <stdio.h>
-#define NULL 0 /* pointer value for error report */
-#define ALLOCSIZE 1000 /* size of available space */
+#define NULL 0                   /* pointer value for error report */
+#define ALLOCSIZE 1000           /* size of available space */
+
 
 static char allocbuf[ALLOCSIZE]; /* storage for alloc */
-static char *allocp = allocbuf;  /* next free position */
+static char *allocp = allocbuf;  /* next free position; 
+                                    initialised to 0 
+                                    since it points to the zeroth element of uninitialised array
+                                */
 
 
 char *alloc(int n) { /* return pointer to n characters */
@@ -31,5 +35,3 @@ void free(char *p) { /* free storage pointed to by p */
         allocp = p;
     }
 } 
-
-
