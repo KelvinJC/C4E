@@ -16,6 +16,7 @@ static char allocbuf[ALLOCSIZE]; /* storage for alloc */
 static char *allocp = allocbuf;  /* next free position; 
                                     initialised to 0 
                                     since it points to the zeroth element of uninitialised array
+                                    which is 0
                                 */
 
 
