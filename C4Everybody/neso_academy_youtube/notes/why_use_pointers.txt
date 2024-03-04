@@ -1,0 +1,22 @@
+Why use pointers?
+
+1. 
+Since variables are passed by value,
+in the case where a main function passes its variables to a defined function,
+if the variables are modified within the function
+what has been modified is a value copy of the variable 
+not the variable's value itself.
+To address the need for a function to change the actual variable and not its copy 
+(as is the case when the variable is passed by value)
+we use pointers to pass the memory addresses of the variable into the function. 
+In this way, any change the function makes is on the actual value of the variable
+
+2. 
+Functions in C cannot return multiple variables.
+
+To address the need for the effect of a function on a set of variables 
+to persist beyond the runtime of the function 
+
+the workaround for that is to pass the memory addresses of the different 
+variables into the function. In this way, the function can modify the value 
+of the variables and the modification is made to the actual variable

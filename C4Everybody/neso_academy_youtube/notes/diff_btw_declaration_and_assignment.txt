@@ -1,0 +1,4 @@
+int *p = &i // In this context, the * operator is not acting as indirection operator (aka value of operator, dereference operator)
+            // but is serving to inform the compiler that p is a pointer to a variable
+
+     p = &i  // p, the pointer is being assigned the memory address of i the variable
