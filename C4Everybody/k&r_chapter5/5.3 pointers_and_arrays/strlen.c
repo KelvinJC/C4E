@@ -24,3 +24,22 @@ but merely increments strlen's private copy of the address.
 
 As formal parameters in a function definition, `char str[];` and `char *str;`  are exactly equivalent;
 */
+
+
+
+/*
+-- Yet another version of strlen --
+
+Pointer subtraction is also valid: 
+if p and q point to members of the same array, 
+p-q is the number of elements between p and q. 
+This fact can be used to write yet another version of strlen..
+*/
+
+strlen(char *s) { /* return length of string s */
+  char *p = s;      // assign pointer passed in as parameter to automatic pointer variable within function
+
+  while(*p != '\0') // while end of string has not been reached, increment pointer variable
+    p++;
+  return(p-s);      // return difference between current pointer value and initial value
+}
