@@ -1,0 +1,6 @@
+# Code and steps were obtained from ChatGPT 3.5
+# Assemble the assembly code (i.e. hello_world.asm) using NASM with the win64 option:
+nasm -f win64 hello.asm -o hello.obj
+
+# Link the object file using the Microsoft linker (link.exe):
+link /subsystem:console /entry:start hello.obj /out:hello.exe kernel32.lib
