@@ -30,14 +30,14 @@ void main() {
 }
 
 void define_array() {
-    // With macro
+    /* With macro */
     int arr[MAX];                  
     printf("%p \n", &arr[0]);
 
     /* 
-    With the defined const.
-    Commented out because some compilers 
-    including the one curently on my machine reject the statement
+      With the defined const.
+      Commented out because some compilers 
+      including the one curently on my machine reject the statement
     */
     // int arr2[MAX_INT];            
     // printf("%p \n", &arr[0]);
@@ -45,18 +45,18 @@ void define_array() {
 }
 
 void concatenate_strings() {
-    // With macro.
+    /* With macro. */
     printf(INTRODUCE"Kelvin \n");
 
     /* 
-    With the defined const.
-    Commented out because some compilers 
-    including the one curently on my machine reject the statement
+      With the defined const.
+      Commented out because some compilers 
+      including the one curently on my machine reject the statement
     */
     // printf(INTRODUCE2"Kelvin");  // example uses const;
 }
 
 void use_defined_integer() {
-    // With const; works just fine. Recommended.
+    /* With const; works just fine. Recommended. */
     printf("%d \n", NUM);
 }
