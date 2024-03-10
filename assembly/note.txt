@@ -1,0 +1,6 @@
+For fun, add the -s parameter to your C compiler
+and see the resulting assembly language output for your system.
+
+Write a hello world program in c
+Use the gcc -S program_name.c command 
+to view the Assembly language output of the program
